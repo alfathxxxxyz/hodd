@@ -85,7 +85,13 @@ button:focus-visible {
   text-shadow: 2px 2px 0 #31400c;
 }
 
-.brand svg { fill: var(--lime); color: var(--ink); }
+.brand-logo {
+  display: block;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
 
 .main-nav { display: flex; align-self: stretch; }
 
@@ -191,10 +197,12 @@ button:focus-visible {
 
 .screen-bezel {
   position: relative;
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 18px 18px 18px;
+  min-width: 0;
+  padding: 18px;
   background-color: var(--panel);
   background-image:
     linear-gradient(rgba(214, 254, 80, 0.055) 1px, transparent 1px),
@@ -257,18 +265,26 @@ button:focus-visible {
 .overlay-no { opacity: 0.95; }
 
 .game-canvas {
-  width: min(100%, 496px);
+  position: relative;
+  display: block;
+  flex: 0 0 auto;
+  width: min(100%, 456px);
+  max-width: 456px;
   aspect-ratio: 19 / 23;
+  overflow: hidden;
   border: 3px solid var(--bevel);
   background: var(--screen);
   box-shadow: 0 0 22px rgba(214, 254, 80, 0.1);
-  margin-bottom: 6px;
+  margin: 0 0 6px;
 }
 
 .game-canvas canvas {
+  position: absolute !important;
+  inset: 0;
   display: block;
   width: 100% !important;
   height: 100% !important;
+  margin: 0 !important;
   image-rendering: pixelated;
 }
 
@@ -526,14 +542,15 @@ button:focus-visible {
 @media (max-width: 620px) {
   .site-shell { width: 100%; padding: 0 8px 18px; }
   .topbar { grid-template-columns: 1fr auto; min-height: 62px; }
-  .main-nav button { padding: 0 9px; font-size: 0; }
-  .main-nav button svg { width: 20px; height: 20px; }
+  .main-nav button { padding: 0 10px; font-size: 0.78rem; }
+  .brand-logo { width: 28px; height: 28px; }
   .game-page { gap: 0; margin-top: 10px; box-shadow: 4px 4px 0 #1b2418; }
   .cabinet { box-shadow: none; }
   .cabinet-marquee { min-height: 48px; padding: 8px 12px; font-size: 0.5rem; }
   .cabinet-marquee b { font-size: 0.58rem; }
   .marquee-title { font-size: 1rem; }
-  .screen-bezel { padding: 10px 10px 12px; }
+  .screen-bezel { padding: 10px; }
+  .game-canvas { width: 100%; max-width: 456px; aspect-ratio: 19 / 23; }
   .screen-glare { inset: 10px 10px 12px; }
   .start-overlay { inset: 10px 10px 12px; padding: 16px 16px; border-width: 3px; }
   .result-overlay { inset: 10px 10px 12px; padding: 20px 16px; }
@@ -586,4 +603,3 @@ button:focus-visible {
 @media (prefers-reduced-motion: no-preference) {
   .blink { animation: pixel-blink 1s steps(1) infinite; }
   @keyframes pixel-blink { 50% { opacity: 0.25; } }
-}
