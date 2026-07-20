@@ -226,7 +226,7 @@ export default class GameScene extends Phaser.Scene {
 
   private configureControls(): void {
     const keyboard = this.input.keyboard;
-    keyboard?.addKeys("W,A,S,D,UP,DOWN,LEFT,RIGHT");
+    keyboard?.addKeys("W,A,S,D,UP,DOWN,LEFT,RIGHT", false);
     keyboard?.on("keydown", (event: KeyboardEvent) => {
       const focusedElement =
         document.activeElement as HTMLElement | null;
