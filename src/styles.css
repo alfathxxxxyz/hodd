@@ -2095,3 +2095,14 @@ button:focus-visible {
   left: 52.1% !important;
   transform: translate(-50%, -42%) !important;
 }
+
+/* RESTORE START OVERLAY SIZE */
+.start-overlay {
+  inset: 8px 8px 4px !important;
+}
+
+.overlay-center {
+  top: 47.6% !important;
+  left: 52.1% !important;
+  transform: translate(-50%, -42%) !important;
+}
