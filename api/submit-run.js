@@ -1,22 +1,5 @@
 ﻿import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.SUPABASE_URL;
-const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-if (!supabaseUrl || !serviceRoleKey) {
-  throw new Error("Missing Supabase environment variables");
-}
-
-const supabase = createClient(
-  supabaseUrl,
-  serviceRoleKey,
-  {
-    auth: {
-      persistSession: false
-    }
-  }
-);
-
 export default async function handler(req, res) {
   if (req.method !== "POST") {
     return res.status(405).json({
@@ -24,7 +7,31 @@ export default async function handler(req, res) {
     });
   }
 
-  try {
+  const supabaseUrl =
+    process.env.SUPABASE_URL ||
+    process.env.NEXT_PUBLIC_SUPABASE_URL;
+
+  const serviceRoleKey =
+    process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  if (!supabaseUrl || !serviceRoleKey) {
+    return res.status(500).json({
+      error: "Missing Supabase environment variables",
+      hasUrl: Boolean(supabaseUrl),
+      hasServiceRoleKey: Boolean(serviceRoleKey)
+    });
+  }
+
+  const supabase = createClient(
+    supabaseUrl,
+    serviceRoleKey,
+    {
+      auth: {
+        persistSession: false
+      }
+    }
+  );
+try {
     const {
       runId,
       walletAddress,
@@ -155,3 +162,4 @@ export default async function handler(req, res) {
     });
   }
 }
+
