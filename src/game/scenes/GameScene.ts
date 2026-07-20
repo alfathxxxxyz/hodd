@@ -228,7 +228,20 @@ export default class GameScene extends Phaser.Scene {
     const keyboard = this.input.keyboard;
     keyboard?.addKeys("W,A,S,D,UP,DOWN,LEFT,RIGHT");
     keyboard?.on("keydown", (event: KeyboardEvent) => {
+      const target = event.target as HTMLElement | null;
+
+      const isTyping =
+        target instanceof HTMLInputElement ||
+        target instanceof HTMLTextAreaElement ||
+        target instanceof HTMLSelectElement ||
+        target?.isContentEditable === true;
+
+      if (isTyping) {
+        return;
+      }
+
       const direction = this.directionFromKey(event.key);
+
       if (direction !== Direction.None) {
         event.preventDefault();
         this.player.setRequestedDirection(direction);
