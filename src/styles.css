@@ -2153,3 +2153,19 @@ button:focus-visible {
     font-size: 9px !important;
   }
 }
+
+/* MOBILE NAV TEXT SIZE FIX */
+@media (max-width: 700px) {
+  .topbar .main-nav button {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.02em !important;
+  }
+}
+
+@media (max-width: 390px) {
+  .topbar .main-nav button {
+    font-size: 13px !important;
+  }
+}
