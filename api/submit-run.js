@@ -69,19 +69,23 @@ try {
     const cleanDamageTaken = Math.floor(Number(damageTaken) || 0);
     const cleanDuration = Math.floor(Number(durationMs) || 0);
 
+    const values = [
+      cleanScore,
+      cleanSparks,
+      cleanRareSparks,
+      cleanCaptures,
+      cleanDamageTaken,
+      cleanDuration
+    ];
+
     const valid =
+      values.every(Number.isFinite) &&
       cleanScore >= 0 &&
-      cleanScore <= 1000000 &&
       cleanSparks >= 0 &&
-      cleanSparks <= 500 &&
       cleanRareSparks >= 0 &&
-      cleanRareSparks <= 100 &&
       cleanCaptures >= 0 &&
-      cleanCaptures <= 500 &&
       cleanDamageTaken >= 0 &&
-      cleanDamageTaken <= 100 &&
-      cleanDuration >= 1000 &&
-      cleanDuration <= 300000;
+      cleanDuration >= 0;
 
     if (!valid) {
       return res.status(400).json({
