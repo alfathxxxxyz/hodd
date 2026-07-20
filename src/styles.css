@@ -1982,3 +1982,102 @@ button:focus-visible {
     0 0 14px rgba(214, 254, 80, 0.22);
   transform: translateX(-50%);
 }
+
+/* WHITELIST RESULT FORM */
+
+.whitelist-form {
+  width: min(390px, 90%);
+  display: grid;
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.whitelist-unlocked {
+  margin: 0 0 3px;
+  color: #d6fe51;
+  font-family: "Press Start 2P", monospace;
+  font-size: 10px;
+  text-align: center;
+  text-shadow: 2px 2px 0 #000;
+}
+
+.whitelist-form input {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  padding: 11px 12px;
+  border: 2px solid #61753b;
+  border-radius: 0;
+  outline: none;
+  background: #090d07;
+  color: #ecffd0;
+  font-family: "VT323", monospace;
+  font-size: 20px;
+  text-transform: none;
+}
+
+.whitelist-form input:focus {
+  border-color: #d6fe51;
+  box-shadow:
+    0 0 0 2px #18200f,
+    0 0 14px rgba(214, 254, 81, 0.2);
+}
+
+.whitelist-form input::placeholder {
+  color: #7d8c69;
+}
+
+.whitelist-form button {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #d6fe51;
+  background: #d6fe51;
+  color: #0b0e08;
+  font-family: "Press Start 2P", monospace;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.whitelist-form button:hover {
+  transform: translateY(-1px);
+  box-shadow: 3px 3px 0 #52651d;
+}
+
+.whitelist-form button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.whitelist-message {
+  width: min(390px, 90%);
+  margin: 12px 0 0;
+  padding: 10px;
+  border: 2px solid;
+  font-family: "Press Start 2P", monospace;
+  font-size: 8px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+.whitelist-message.success {
+  border-color: #d6fe51;
+  background: #14200c;
+  color: #d6fe51;
+}
+
+.whitelist-message.error {
+  border-color: #ff625f;
+  background: #26100f;
+  color: #ff8c89;
+}
+
+.whitelist-locked {
+  margin: 12px 0 0;
+  color: #ff8679;
+  font-family: "Press Start 2P", monospace;
+  font-size: 8px;
+}
+
+.result-play-again {
+  margin-top: 12px;
+}
