@@ -366,9 +366,7 @@ function LandingPage({
         <div className="hero-visual">
           <div className="hero-machine">
             <div className="machine-top">
-              <span>h00dle</span>
-              <i />
-            </div>
+              <span>h00dle</span>`r`n            </div>
 
             <div className="machine-screen">
               <div className="screen-grid" />
@@ -746,4 +744,5 @@ function LeaderboardPage({
     </section>
   );
 }
+
 

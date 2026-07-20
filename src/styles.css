@@ -1902,3 +1902,25 @@ button:focus-visible {
     display: none !important;
   }
 }
+
+/* =========================================
+   H00DLE MACHINE TOP + SECTION BARRIER FIX
+   ========================================= */
+
+.machine-top i {
+  display: none !important;
+}
+
+.hero-section {
+  border-bottom: 0 !important;
+  padding-bottom: 28px !important;
+}
+
+.score-section {
+  padding-top: 8px !important;
+  margin-top: 0 !important;
+}
+
+.score-card {
+  border-top: 0 !important;
+}
