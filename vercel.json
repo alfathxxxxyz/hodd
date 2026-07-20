@@ -1,0 +1,17 @@
+﻿{
+  "rewrites": [
+    {
+      "source": "/game",
+      "destination": "/"
+    },
+    {
+      "source": "/leaderboard",
+      "destination": "/"
+    }
+  ],
+  "functions": {
+    "api/*.js": {
+      "maxDuration": 10
+    }
+  }
+}
