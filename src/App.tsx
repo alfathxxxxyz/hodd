@@ -58,7 +58,7 @@ function resolvePage(): Page {
 export default function App(): ReactElement {
   const [page, setPage] = useState<Page>(resolvePage);
 
-  const [entries] = useState<LeaderboardEntry[]>([]);
+  const [entries, setEntries] = useState<LeaderboardEntry[]>([]);
   const [live, setLive] =
     useState<LiveStats>(initialLiveStats);
 
@@ -744,5 +744,6 @@ function LeaderboardPage({
     </section>
   );
 }
+
 
 
