@@ -1,4 +1,4 @@
-﻿import {
+import {
   useState,
   type FormEvent,
   type ReactElement
@@ -109,6 +109,12 @@ export function ResultOverlay({
       setSubmitStatus("success");
       setMessage(
         "WHITELIST ACCESS SECURED"
+      );
+
+      window.dispatchEvent(
+        new Event(
+          "ghostlist-leaderboard-refresh"
+        )
       );
     } catch (error) {
       setSubmitStatus("error");
