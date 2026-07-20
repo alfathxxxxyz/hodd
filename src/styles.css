@@ -1847,3 +1847,58 @@ button:focus-visible {
 }
 
 }
+
+/* =========================================
+   H00DLE HEADER ALIGNMENT
+   ========================================= */
+
+.topbar {
+  display: grid !important;
+  grid-template-columns: auto 1fr auto !important;
+  align-items: center !important;
+  width: 100% !important;
+}
+
+.brand {
+  justify-self: start !important;
+  margin-right: 0 !important;
+}
+
+.main-nav {
+  justify-self: center !important;
+  margin: 0 !important;
+}
+
+.topbar-play {
+  justify-self: end !important;
+  width: auto !important;
+  min-width: 145px !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  padding: 0 22px !important;
+  flex: none !important;
+}
+
+.hero-copy {
+  padding-top: 0 !important;
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    display: flex !important;
+    flex-wrap: wrap !important;
+  }
+
+  .brand {
+    margin-right: auto !important;
+  }
+
+  .main-nav {
+    order: 3;
+    width: 100%;
+  }
+
+  .topbar-play {
+    display: none !important;
+  }
+}

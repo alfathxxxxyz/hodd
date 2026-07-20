@@ -306,9 +306,6 @@ function LandingPage({
         <div className="hero-grid-overlay" />
 
         <div className="hero-copy">
-          <p className="hero-eyebrow">
-            ARCADE HUNTING PROTOCOL
-          </p>
 
           <h1>
             HUNT THE
@@ -414,79 +411,6 @@ function LandingPage({
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="feature-section">
-        <div className="section-heading">
-          <p className="panel-kicker">
-            MISSION DATABASE
-          </p>
-
-          <h2>
-            ENTER. HUNT.
-            <br />
-            ESCAPE.
-          </h2>
-
-          <p>
-            h00dle is a fast arcade challenge
-            where every second and every movement
-            matters.
-          </p>
-        </div>
-
-        <div className="feature-grid">
-          <article className="feature-card">
-            <div className="feature-number">
-              01
-            </div>
-
-            <Sparkles aria-hidden="true" />
-
-            <h3>COLLECT</h3>
-
-            <p>
-              Clear the maze by collecting sparks
-              and rare energy fragments.
-            </p>
-
-            <span>80 SPARK TARGET</span>
-          </article>
-
-          <article className="feature-card featured">
-            <div className="feature-number">
-              02
-            </div>
-
-            <Crosshair aria-hidden="true" />
-
-            <h3>CAPTURE</h3>
-
-            <p>
-              Activate Hunt Mode and turn dangerous
-              ghosts into score multipliers.
-            </p>
-
-            <span>CHAIN YOUR COMBO</span>
-          </article>
-
-          <article className="feature-card">
-            <div className="feature-number">
-              03
-            </div>
-
-            <Zap aria-hidden="true" />
-
-            <h3>ESCAPE</h3>
-
-            <p>
-              Reach the score target, unlock the
-              portal and survive the final chase.
-            </p>
-
-            <span>BEAT THE CLOCK</span>
-          </article>
         </div>
       </section>
 
@@ -822,3 +746,4 @@ function LeaderboardPage({
     </section>
   );
 }
+
