@@ -181,7 +181,7 @@ export default function App(): ReactElement {
             <section className="pixel-panel live-panel">
               <div className="panel-heading">
                 <Zap size={18} />
-                <h2>LIVE RUN</h2>
+                <h2>LIVE SCORE</h2>
                 <span>REC</span>
               </div>
               <div className="live-score">
