@@ -11,6 +11,7 @@
   "dependencies": {
     "@fontsource/press-start-2p": "^5.3.0",
     "@fontsource/vt323": "^5.3.0",
+    "@supabase/supabase-js": "^2.110.7",
     "@vitejs/plugin-react": "^4.3.4",
     "lucide-react": "^0.468.0",
     "phaser": "^3.87.0",
