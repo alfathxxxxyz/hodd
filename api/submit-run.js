@@ -1,4 +1,4 @@
-﻿import { createClient } from "@supabase/supabase-js";
+import { createClient } from "@supabase/supabase-js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -71,21 +71,29 @@ try {
 
     const valid =
       cleanScore >= 0 &&
-      cleanScore <= 100000 &&
+      cleanScore <= 1000000 &&
       cleanSparks >= 0 &&
-      cleanSparks <= 80 &&
+      cleanSparks <= 500 &&
       cleanRareSparks >= 0 &&
-      cleanRareSparks <= 10 &&
+      cleanRareSparks <= 100 &&
       cleanCaptures >= 0 &&
-      cleanCaptures <= 100 &&
+      cleanCaptures <= 500 &&
       cleanDamageTaken >= 0 &&
-      cleanDamageTaken <= 20 &&
+      cleanDamageTaken <= 100 &&
       cleanDuration >= 1000 &&
-      cleanDuration <= 125000;
+      cleanDuration <= 300000;
 
     if (!valid) {
       return res.status(400).json({
-        error: "Invalid run data"
+        error: "Invalid run data",
+        received: {
+          score: cleanScore,
+          sparks: cleanSparks,
+          rareSparks: cleanRareSparks,
+          captures: cleanCaptures,
+          damageTaken: cleanDamageTaken,
+          durationMs: cleanDuration
+        }
       });
     }
 
