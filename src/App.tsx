@@ -1,4 +1,4 @@
-﻿import { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import type { ReactElement } from "react";
 import {
   ArrowRight,
@@ -44,11 +44,14 @@ const initialLiveStats: LiveStats = {
 type Page = "home" | "game" | "leaderboard";
 
 function resolvePage(): Page {
-  if (window.location.hash === "#game") {
+  const pathname =
+    window.location.pathname.replace(/\/+$/, "") || "/";
+
+  if (pathname === "/game") {
     return "game";
   }
 
-  if (window.location.hash === "#leaderboard") {
+  if (pathname === "/leaderboard") {
     return "leaderboard";
   }
 
@@ -80,7 +83,7 @@ export default function App(): ReactElement {
   const [resetToken, setResetToken] = useState(0);
 
   useEffect(() => {
-    const onHashChange = (): void => {
+    const onRouteChange = (): void => {
       setPage(resolvePage());
     };
 
@@ -119,8 +122,8 @@ export default function App(): ReactElement {
     };
 
     window.addEventListener(
-      "hashchange",
-      onHashChange
+      "popstate",
+      onRouteChange
     );
 
     window.addEventListener(
@@ -135,8 +138,8 @@ export default function App(): ReactElement {
 
     return () => {
       window.removeEventListener(
-        "hashchange",
-        onHashChange
+        "popstate",
+        onRouteChange
       );
 
       window.removeEventListener(
@@ -152,11 +155,16 @@ export default function App(): ReactElement {
   }, []);
 
   const navigate = (nextPage: Page): void => {
-    if (nextPage === "home") {
-      window.location.hash = "";
-    } else {
-      window.location.hash = nextPage;
-    }
+    const pathname =
+      nextPage === "home"
+        ? "/"
+        : `/${nextPage}`;
+
+    window.history.pushState(
+      {},
+      "",
+      pathname
+    );
 
     setPage(nextPage);
 
