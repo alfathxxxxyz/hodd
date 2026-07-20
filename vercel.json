@@ -1,4 +1,5 @@
-﻿{
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "rewrites": [
     {
       "source": "/game",
@@ -8,10 +9,5 @@
       "source": "/leaderboard",
       "destination": "/"
     }
-  ],
-  "functions": {
-    "api/*.js": {
-      "maxDuration": 10
-    }
-  }
+  ]
 }
