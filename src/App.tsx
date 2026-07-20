@@ -83,6 +83,58 @@ export default function App(): ReactElement {
   const [resetToken, setResetToken] = useState(0);
 
   useEffect(() => {
+    let cancelled = false;
+
+    const loadLeaderboard = async (): Promise<void> => {
+      try {
+        const response = await fetch(
+          `/api/leaderboard?t=${Date.now()}`,
+          {
+            cache: "no-store"
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            `Leaderboard failed: ${response.status}`
+          );
+        }
+
+        const data = (await response.json()) as {
+          entries?: LeaderboardEntry[];
+        };
+
+        if (!cancelled) {
+          setEntries(
+            Array.isArray(data.entries)
+              ? data.entries
+              : []
+          );
+        }
+      } catch (error) {
+        console.error(
+          "Leaderboard load error:",
+          error
+        );
+      }
+    };
+
+    void loadLeaderboard();
+
+    const intervalId = window.setInterval(
+      () => {
+        void loadLeaderboard();
+      },
+      10000
+    );
+
+    return () => {
+      cancelled = true;
+      window.clearInterval(intervalId);
+    };
+  }, []);
+
+  useEffect(() => {
     const onRouteChange = (): void => {
       setPage(resolvePage());
     };
