@@ -2081,3 +2081,10 @@ button:focus-visible {
 .result-play-again {
   margin-top: 12px;
 }
+
+/* START OVERLAY POSITION TWEAK */
+.overlay-center {
+  top: 49% !important;
+  left: 50.8% !important;
+  transform: translate(-50%, -42%) !important;
+}
