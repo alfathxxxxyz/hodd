@@ -2169,3 +2169,849 @@ button:focus-visible {
     font-size: 13px !important;
   }
 }
+
+/* =========================================
+   HIDDEN WHITELIST MISSION PAGE
+   ========================================= */
+
+.whitelist-door,
+.whitelist-loader,
+.whitelist-world {
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  font-family: "Press Start 2P", "Courier New", monospace;
+}
+
+.whitelist-door {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: #000;
+}
+
+.whitelist-door-button {
+  display: grid;
+  place-items: center;
+  width: min(27vw, 210px);
+  min-width: 132px;
+  aspect-ratio: 1;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  image-rendering: pixelated;
+}
+
+.whitelist-door-button img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter:
+    drop-shadow(0 0 0 #121212)
+    drop-shadow(0 0 18px rgba(214, 254, 80, 0.06));
+  transform: scale(0.72);
+  transition:
+    transform 160ms steps(3),
+    filter 160ms steps(3);
+}
+
+.whitelist-door-button:hover img,
+.whitelist-door-button:focus-visible img {
+  filter:
+    drop-shadow(0 0 0 #121212)
+    drop-shadow(0 0 22px rgba(214, 254, 80, 0.18));
+  transform: scale(0.8);
+}
+
+.whitelist-twitter-link {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  z-index: 5;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 7px;
+  line-height: 1;
+  text-decoration: none;
+  transform: translateX(-50%);
+}
+
+.whitelist-twitter-link:hover {
+  color: #fff;
+}
+
+.whitelist-loader {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 32px;
+  background:
+    radial-gradient(
+      circle at 50% 48%,
+      rgba(214, 254, 80, 0.12),
+      rgba(0, 0, 0, 0) 34%
+    ),
+    #000;
+  color: #d6fe50;
+}
+
+.whitelist-loader::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(214, 254, 80, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(214, 254, 80, 0.035) 1px, transparent 1px);
+  background-size: 100% 6px, 42px 42px;
+  opacity: 0.72;
+}
+
+.whitelist-loader-scene {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  justify-items: center;
+  gap: clamp(28px, 5vh, 44px);
+  width: min(78vw, 520px);
+}
+
+.whitelist-loader-center-ghost {
+  width: clamp(120px, 14vw, 172px);
+  height: clamp(120px, 14vw, 172px);
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter:
+    drop-shadow(0 0 0 #121212)
+    drop-shadow(0 0 28px rgba(214, 254, 80, 0.18));
+  animation: whitelistCenterGhostPulse 2s steps(5) both;
+}
+
+.whitelist-chase-track {
+  position: relative;
+  width: 100%;
+  height: 58px;
+}
+
+.whitelist-track-grid {
+  position: absolute;
+  left: 68px;
+  right: 72px;
+  top: 28px;
+  height: 6px;
+  background-image: radial-gradient(circle, #d6fe50 0 3px, transparent 3px);
+  background-size: 28px 6px;
+  background-repeat: repeat-x;
+  opacity: 0.78;
+  animation: whitelistDotsMove 420ms steps(2) infinite;
+}
+
+.whitelist-hunter-sprite,
+.whitelist-load-ghost {
+  position: absolute;
+  top: 8px;
+  z-index: 3;
+  image-rendering: pixelated;
+}
+
+.whitelist-hunter-sprite {
+  left: 0;
+  width: 48px;
+  height: 48px;
+  animation: whitelistHunterRun 2s steps(20) both;
+}
+
+.hunter-pixel {
+  position: absolute;
+  display: block;
+}
+
+.hunter-pixel.shadow {
+  left: 9px;
+  top: 38px;
+  width: 30px;
+  height: 6px;
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.hunter-pixel.boot.left {
+  left: 12px;
+  top: 31px;
+  width: 8px;
+  height: 10px;
+  background: #101612;
+}
+
+.hunter-pixel.boot.right {
+  left: 29px;
+  top: 31px;
+  width: 8px;
+  height: 10px;
+  background: #101612;
+}
+
+.hunter-pixel.body {
+  left: 13px;
+  top: 15px;
+  width: 24px;
+  height: 21px;
+  background: #d6fe50;
+}
+
+.hunter-pixel.coat {
+  left: 13px;
+  top: 18px;
+  width: 6px;
+  height: 16px;
+  background: #91b52b;
+}
+
+.hunter-pixel.face {
+  left: 17px;
+  top: 4px;
+  width: 17px;
+  height: 13px;
+  background: #f4f0c9;
+}
+
+.hunter-pixel.eye {
+  left: 27px;
+  top: 6px;
+  width: 4px;
+  height: 4px;
+  background: #050708;
+}
+
+.hunter-pixel.hat {
+  left: 13px;
+  top: -6px;
+  width: 25px;
+  height: 8px;
+  background: #171c18;
+}
+
+.hunter-pixel.hat-band {
+  left: 13px;
+  top: -2px;
+  width: 25px;
+  height: 3px;
+  background: #d6fe50;
+}
+
+.hunter-pixel.brim {
+  left: 8px;
+  top: 1px;
+  width: 35px;
+  height: 5px;
+  background: #171c18;
+}
+
+.hunter-pixel.lamp {
+  left: 35px;
+  top: -6px;
+  width: 7px;
+  height: 7px;
+  background: #4deeea;
+  box-shadow: 0 0 10px rgba(77, 238, 234, 0.9);
+}
+
+.hunter-pixel.handle {
+  left: 2px;
+  top: 14px;
+  width: 4px;
+  height: 21px;
+  background: #f3f7df;
+  transform: rotate(-18deg);
+}
+
+.hunter-pixel.net {
+  left: -7px;
+  top: 5px;
+  width: 14px;
+  height: 14px;
+  border: 3px solid #f3f7df;
+  background: rgba(5, 7, 8, 0.25);
+}
+
+.whitelist-load-ghost {
+  left: 84px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 0 0 #121212)
+    drop-shadow(0 0 16px rgba(214, 254, 80, 0.18));
+  animation: whitelistGhostRun 2s steps(20) both;
+}
+
+.whitelist-loader-copy {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(56px, 11vh, 92px);
+  z-index: 2;
+  margin: 0;
+  color: rgba(244, 255, 242, 0.72);
+  font-family: "VT323", "Courier New", monospace;
+  font-size: clamp(20px, 3vw, 31px);
+  letter-spacing: 0;
+  transform: translateX(-50%);
+  animation: whitelistLoaderBlink 540ms steps(2) infinite;
+}
+
+.whitelist-world {
+  position: relative;
+  display: grid;
+  place-items: center;
+  padding: 44px clamp(24px, 6vw, 78px);
+  background:
+    radial-gradient(
+      circle at 45% 48%,
+      rgba(214, 254, 80, 0.18),
+      rgba(7, 15, 9, 0.78) 31%,
+      #000 68%
+    ),
+    #000;
+  color: #12341c;
+  animation: whitelistWorldIn 520ms ease-out both;
+}
+
+.whitelist-world::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      circle at 50% 52%,
+      rgba(214, 254, 80, 0.1),
+      transparent 34%
+    ),
+    linear-gradient(
+      rgba(214, 254, 80, 0.055) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(214, 254, 80, 0.04) 1px,
+      transparent 1px
+    );
+  background-size: auto, 100% 6px, 42px 42px;
+  opacity: 0.7;
+  animation: whitelistGridIn 700ms ease-out both;
+}
+
+.whitelist-brand {
+  position: fixed;
+  top: 36px;
+  left: 40px;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  color: #f4fff2;
+  font-size: 11px;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.16);
+  animation: whitelistBrandIn 480ms ease-out 120ms both;
+}
+
+.whitelist-brand img {
+  width: 31px;
+  height: 31px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.whitelist-stage {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: clamp(22px, 4vh, 34px);
+  width: min(100%, 680px);
+  margin-top: 28px;
+}
+
+.whitelist-mascot-wrap {
+  display: grid;
+  place-items: center;
+}
+
+.whitelist-mascot {
+  width: min(26vw, 190px);
+  min-width: 132px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  filter:
+    drop-shadow(18px 22px 0 rgba(26, 124, 39, 0.2))
+    drop-shadow(0 0 22px rgba(214, 254, 80, 0.18));
+  animation: whitelistMascotIn 620ms steps(8) 80ms both;
+}
+
+.whitelist-mission-card {
+  position: relative;
+  width: min(100%, 620px);
+  min-height: 0;
+  padding: 38px 34px 34px;
+  border: 4px solid #d6fe50;
+  border-radius: 0;
+  background:
+    linear-gradient(rgba(214, 254, 80, 0.045) 1px, transparent 1px),
+    rgba(2, 7, 3, 0.96);
+  background-size: 100% 6px, auto;
+  box-shadow:
+    0 0 0 8px #111912,
+    0 0 0 11px rgba(214, 254, 80, 0.24),
+    0 28px 60px rgba(16, 136, 29, 0.2),
+    inset 0 0 0 2px rgba(214, 254, 80, 0.1);
+  clip-path: polygon(
+    18px 0,
+    calc(100% - 18px) 0,
+    100% 18px,
+    100% calc(100% - 18px),
+    calc(100% - 18px) 100%,
+    18px 100%,
+    0 calc(100% - 18px),
+    0 18px
+  );
+  animation: whitelistCardIn 620ms ease-out 120ms both;
+}
+
+.whitelist-mission-card::before {
+  content: "MISSION BOARD";
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  width: auto;
+  height: auto;
+  color: rgba(214, 254, 80, 0.42);
+  background: transparent;
+  font-size: 7px;
+  transform: none;
+}
+
+.whitelist-mission-card h1 {
+  margin: 0 0 16px;
+  color: #d6fe50;
+  font-size: clamp(30px, 3.2vw, 39px);
+  line-height: 1.08;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.whitelist-mission-card > p {
+  max-width: 395px;
+  margin: 0 0 26px;
+  color: rgba(214, 254, 80, 0.68);
+  font-family: "VT323", "Courier New", monospace;
+  font-size: 20px;
+  line-height: 1.15;
+}
+
+.whitelist-task-list {
+  display: grid;
+  gap: 12px;
+}
+
+.whitelist-task {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  min-height: 68px;
+  padding: 12px 17px 12px 14px;
+  border: 2px solid rgba(214, 254, 80, 0.18);
+  border-radius: 0;
+  background: rgba(214, 254, 80, 0.055);
+  color: #d6fe50;
+  text-decoration: none;
+}
+
+.whitelist-task.open {
+  box-shadow:
+    0 10px 26px rgba(214, 254, 80, 0.06),
+    inset 0 0 0 1px rgba(214, 254, 80, 0.18);
+}
+
+.whitelist-task.open:hover {
+  transform: translateY(-1px);
+  background: rgba(214, 254, 80, 0.1);
+}
+
+.whitelist-task.done {
+  border-color: rgba(214, 254, 80, 0.46);
+  background: rgba(214, 254, 80, 0.13);
+  box-shadow:
+    0 0 22px rgba(214, 254, 80, 0.08),
+    inset 0 0 0 1px rgba(214, 254, 80, 0.24);
+}
+
+.whitelist-task.locked {
+  opacity: 0.5;
+}
+
+.whitelist-task-number {
+  display: grid;
+  place-items: center;
+  width: 33px;
+  height: 33px;
+  border-radius: 0;
+  border: 1px solid rgba(214, 254, 80, 0.58);
+  background: #020703;
+  color: #d6fe50;
+  font-size: 8px;
+}
+
+.whitelist-task-copy {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+}
+
+.whitelist-task-copy strong {
+  color: #d6fe50;
+  font-size: 10px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.whitelist-task-copy small {
+  color: rgba(214, 254, 80, 0.46);
+  font-family: "VT323", "Courier New", monospace;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.whitelist-task-status {
+  color: #d6fe50;
+  font-size: 7px;
+  white-space: nowrap;
+}
+
+.whitelist-task-status.done {
+  color: #4deeea;
+}
+
+.whitelist-task-status.locked {
+  color: rgba(214, 254, 80, 0.38);
+}
+
+.whitelist-final-form {
+  display: grid;
+  gap: 18px;
+  animation: whitelistCardIn 420ms ease-out both;
+}
+
+.whitelist-field {
+  display: grid;
+  gap: 10px;
+}
+
+.whitelist-field span {
+  color: #d6fe50;
+  font-size: 9px;
+}
+
+.whitelist-field input {
+  width: 100%;
+  min-height: 58px;
+  padding: 0 18px;
+  border: 2px solid rgba(214, 254, 80, 0.28);
+  border-radius: 0;
+  outline: 0;
+  background: rgba(0, 0, 0, 0.52);
+  color: #d6fe50;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 12px;
+}
+
+.whitelist-field input::placeholder {
+  color: rgba(214, 254, 80, 0.32);
+}
+
+.whitelist-field input:focus {
+  border-color: #d6fe50;
+  box-shadow: 0 0 18px rgba(214, 254, 80, 0.14);
+}
+
+.whitelist-form-note {
+  color: rgba(214, 254, 80, 0.5);
+  font-family: "VT323", "Courier New", monospace;
+  font-size: 17px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.whitelist-form-error {
+  margin: -4px 0 0;
+  color: #ff4f87;
+  font-family: "VT323", "Courier New", monospace;
+  font-size: 18px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.whitelist-submit {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 60px;
+  padding: 0 22px;
+  border: 0;
+  background: #d6fe50;
+  color: #020703;
+  cursor: pointer;
+  font-family: "Press Start 2P", "Courier New", monospace;
+  font-size: 11px;
+}
+
+.whitelist-submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.whitelist-twitter-link.on-green {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+@keyframes whitelistLoadFill {
+  from {
+    transform: scaleX(0.04);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes whitelistCenterGhostPulse {
+  from {
+    opacity: 0.62;
+    transform: scale(0.94);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  to {
+    opacity: 0.82;
+    transform: scale(0.96);
+  }
+}
+
+@keyframes whitelistDotsMove {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 28px 0;
+  }
+}
+
+@keyframes whitelistHunterRun {
+  from {
+    transform: translateX(0) translateY(0);
+  }
+
+  50% {
+    transform: translateX(calc(min(78vw, 520px) * 0.44)) translateY(-3px);
+  }
+
+  to {
+    transform: translateX(calc(min(78vw, 520px) - 126px)) translateY(0);
+  }
+}
+
+@keyframes whitelistGhostRun {
+  from {
+    transform: translateX(0) scale(0.9);
+  }
+
+  72% {
+    transform: translateX(calc(min(78vw, 520px) - 176px)) scale(0.9);
+  }
+
+  to {
+    transform: translateX(calc(min(78vw, 520px) - 176px)) scale(1.22);
+  }
+}
+
+@keyframes whitelistLoaderBlink {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes whitelistWorldIn {
+  from {
+    background-color: #000;
+    opacity: 0;
+  }
+
+  to {
+    background-color: #000;
+    opacity: 1;
+  }
+}
+
+@keyframes whitelistGridIn {
+  from {
+    opacity: 0;
+    transform: scale(1.025);
+  }
+
+  to {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+}
+
+@keyframes whitelistBrandIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes whitelistMascotIn {
+  from {
+    opacity: 0;
+    transform: scale(0.74);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes whitelistCardIn {
+  from {
+    opacity: 0;
+    transform: translateX(18px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@media (max-width: 850px) {
+  .whitelist-loader {
+    padding: 24px 18px;
+  }
+
+  .whitelist-loader-scene {
+    width: min(84vw, 460px);
+  }
+
+  .whitelist-chase-track {
+    height: 56px;
+  }
+
+  .whitelist-hunter-sprite {
+    width: 42px;
+    height: 42px;
+  }
+
+  .whitelist-load-ghost {
+    width: 42px;
+    height: 42px;
+  }
+
+  .whitelist-world {
+    align-items: start;
+    padding: 96px 18px 72px;
+    overflow-y: auto;
+  }
+
+  .whitelist-brand {
+    top: 24px;
+    left: 22px;
+  }
+
+  .whitelist-stage {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    width: 100%;
+    max-width: 560px;
+    min-width: 0;
+    margin-top: 0;
+  }
+
+  .whitelist-mascot {
+    width: 154px;
+    min-width: 154px;
+  }
+
+  .whitelist-mission-card {
+    width: 100%;
+    min-width: 0;
+    min-height: auto;
+    padding: 34px 22px 28px;
+  }
+
+  .whitelist-mission-card::before {
+    top: 12px;
+    right: 14px;
+    left: auto;
+    transform: none;
+  }
+
+  .whitelist-mission-card h1 {
+    font-size: 30px;
+  }
+
+  .whitelist-task {
+    grid-template-columns: 34px 1fr;
+    gap: 11px;
+  }
+
+  .whitelist-task-status {
+    grid-column: 2;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 430px) {
+  .whitelist-door-button {
+    width: 158px;
+    min-width: 158px;
+  }
+
+  .whitelist-brand {
+    font-size: 9px;
+  }
+
+  .whitelist-loader-scene {
+    width: calc(100vw - 36px);
+  }
+
+  .whitelist-chase-track {
+    width: 100%;
+  }
+
+  .whitelist-loader-copy {
+    white-space: nowrap;
+  }
+
+  .whitelist-task-copy strong {
+    white-space: normal;
+    line-height: 1.35;
+  }
+}

@@ -8,6 +8,10 @@
     {
       "source": "/leaderboard",
       "destination": "/"
+    },
+    {
+      "source": "/whitelist",
+      "destination": "/"
     }
   ]
 }

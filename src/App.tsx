@@ -15,6 +15,7 @@ import { Leaderboard } from "./components/Leaderboard";
 import { MobileControls } from "./components/MobileControls";
 import { ResultOverlay } from "./components/ResultOverlay";
 import { StartOverlay } from "./components/StartOverlay";
+import { WhitelistPage } from "./components/WhitelistPage";
 
 import type {
   LeaderboardEntry,
@@ -41,7 +42,7 @@ const initialLiveStats: LiveStats = {
   seconds: 120
 };
 
-type Page = "home" | "game" | "leaderboard";
+type Page = "home" | "game" | "leaderboard" | "whitelist";
 
 function resolvePage(): Page {
   const pathname =
@@ -53,6 +54,10 @@ function resolvePage(): Page {
 
   if (pathname === "/leaderboard") {
     return "leaderboard";
+  }
+
+  if (pathname === "/whitelist") {
+    return "whitelist";
   }
 
   return "home";
@@ -249,6 +254,15 @@ export default function App(): ReactElement {
     WHITELIST_SCORE - live.score
   );
 
+  if (page === "whitelist") {
+    return (
+      <WhitelistPage
+        logoSrc={LOGO_SRC}
+        ghostSrc={GHOST_SRC}
+      />
+    );
+  }
+
   return (
     <main className="site-shell">
       <header className="topbar">
@@ -426,7 +440,8 @@ function LandingPage({
         <div className="hero-visual">
           <div className="hero-machine">
             <div className="machine-top">
-              <span>h00dle</span>`r`n            </div>
+              <span>h00dle</span>
+            </div>
 
             <div className="machine-screen">
               <div className="screen-grid" />
