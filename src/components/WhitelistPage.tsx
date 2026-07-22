@@ -29,7 +29,7 @@ const missions: WhitelistMission[] = [
   {
     id: "follow-twitter",
     number: "01",
-    title: "FOLLOW @H00DLE",
+    title: "FOLLOW @h00dle_",
     description: "Join the community",
     status: "open",
     href: "https://x.com/h00dle_"
