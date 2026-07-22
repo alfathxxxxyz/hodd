@@ -6,7 +6,7 @@ type WhitelistPhase = "door" | "loading" | "ready";
 
 const missionProgressStorageKey = "h00dle-whitelist-mission-progress";
 const whitelistEntryStorageKey = "h00dle-whitelist-entry";
-const postTweetId = "2079608701280038945";
+const postTweetId = "2079907575857021239";
 const likeMissionHref = `https://twitter.com/intent/like?tweet_id=${postTweetId}`;
 const replyMissionHref = `https://twitter.com/intent/tweet?in_reply_to=${postTweetId}`;
 const repostMissionHref = `https://twitter.com/intent/retweet?tweet_id=${postTweetId}`;
@@ -383,3 +383,4 @@ function MissionItem({
     </div>
   );
 }
+
